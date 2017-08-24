@@ -30,6 +30,8 @@ var displayMessage = function(post) {
 
   var messageElement = $('<div class="message">' + post.message + '</div>');
   postElement.append(messageElement);
+  var imageElement = $('<img src="'+post.image+'">');
+  postElement.append(imageElement);
 }
 
 var createFeed = function(data) {
