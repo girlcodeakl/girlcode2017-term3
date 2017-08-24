@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" type=text/css" href="//fonts.googleapis.com/css?family=Lobster"
-
-
   <head>
     <meta charset='utf-8'>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -10,14 +7,6 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-
-    <div class = "nav-bar">
-     <a href="feed.html">FEED</a>
-     <a href ="index.html">INDEX</a>
-     <a href="post.html">POST</a>
-     </div>
-
-
     <h1 class="title">Message Feed</h1>
     <div class="message-list">
     </div>
@@ -28,9 +17,13 @@ var displayMessage = function(post) {
   var postElement = $('<div class="post"></div>');
   $(".message-list").append(postElement);
 
-  var messageElement = $('<div class="message">' + post.message + '</div>');
+  var messageElement = $('<div class="message">' + post.message  +'</div>');
   postElement.append(messageElement);
+  var timeElement = $('<div class="time">' + post.time + '</div>');
+  postElement.append(timeElement);
 }
+
+
 
 var createFeed = function(data) {
   data.forEach(displayMessage);
