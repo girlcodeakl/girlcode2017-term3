@@ -34,6 +34,8 @@ var displayMessage = function(post) {
   postElement.append(imageElement);
   var timeElement = $('<div class="time">' + $.format.prettyDate(post.time) + '</div>');
   postElement.append(timeElement);
+  var authorElement = $('<div>' + post.author + '</div>');
+postElement.append(authorElement);
 }
 
 
