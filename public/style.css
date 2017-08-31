@@ -35,3 +35,6 @@ h1 {
   color:purple;
   border: 2px solid #black
 }
+.id{
+      display: none;
+  }

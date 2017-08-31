@@ -29,6 +29,7 @@ var saveNewPost = function (request, response) {
   post.image = request.body.image;
   post.author = request.body.author;
   post.time = new Date();
+  post.id = Math.round(Math.random() * 10000);
   posts.push(post);
   response.send("thanks for your message. Press back to add another");
 }
@@ -37,3 +38,12 @@ app.post('/posts', saveNewPost);
 //listen for connections on port 3000
 app.listen(3000);
 console.log("Hi! I am listening at http://localhost:3000");
+
+//find a post with given id
+
+app.get('/post', function (req, res) {
+   var searchId = req.query.id;
+   console.log("Searching for post " + searchId);
+   var post = posts.find(x => x.id == searchId);
+   res.send(post);
+});
