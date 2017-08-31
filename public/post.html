@@ -2,22 +2,39 @@
 <html>
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lobster">
   <head>
+    <script   src="https://code.jquery.com/jquery-3.2.1.js"   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="   crossorigin="anonymous"></script>
     <meta charset='utf-8'>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-
+    <div class = "note"></div>
     <div class = "nav-bar">
+
      <a href="feed.html">FEED</a>
      <a href ="index.html">INDEX</a>
      <a href="post.html">POST</a>
      </div>
 
       <form method="post" action="/posts">
-          <input type="text" name="message" placeholder="message goes here">
-          <input type="text" name="image" placeholder="image goes here">
-          <button>Post it!</button>
-          
+          <input type="text" name="message" placeholder="message goes here" class="messageInput">
+          <input type="text" name="image" placeholder="image goes here" class="imageInput">
+          <input type="text" name="author" placeholder="name goes here" class="nameInput">
+          <button class="postButton">Post it!</button>
       </form>
+      <script>
+
+    var myCoolFunction = function (e) {
+      var data = {};
+      data.image = $(".imageInput").val();
+      data.message = $(".messageInput").val();
+      data.author = $(".nameInput").val();
+$.post( "/posts" , data );
+    e.preventDefault();
+    $(".note").text("Thanks! Your message was saved!");
+
+}
+$(".postButton").on("click", myCoolFunction);
+
+      </script>
   </body>
 </html>
