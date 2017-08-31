@@ -16,11 +16,10 @@
      </div>
 
       <form method="post" action="/posts">
-          <input class="messageInput"type="text" name="message" value="message goes here">
-          <input class="imageInput"type="text" name="image" value="image goes here">
-          <button
-          class="postButton">Post it!</button>
-
+          <input type="text" name="message" value="message goes here" class="messageInput">
+          <input type="text" name="image" value="image goes here" class="imageInput">
+          <input type="text" name="author" value="name goes here" class="nameInput">
+          <button class="postButton">Post it!</button>
       </form>
       <script>
 
@@ -28,6 +27,7 @@
       var data = {};
       data.image = $(".imageInput").val();
       data.message = $(".messageInput").val();
+      data.author = $(".nameInput").val();
 $.post( "/posts" , data );
     e.preventDefault();
     $(".note").text("Thanks! Your message was saved!");
