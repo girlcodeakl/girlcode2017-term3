@@ -25,14 +25,21 @@ app.get('/posts', sendPostsList);
 //let a client POST something new
 var saveNewPost = function (request, response) {
   console.log(request.body.message); //write it on the command prompt so we can see
+  console.log(request.body.author);
   var post= {};
   post.message = request.body.message;
+  if (request.body.image == "" )
+  {request.body.image =  "https://static01.nyt.com/images/2016/08/10/science/10tb-dogsperm01/10tb-dogsperm01-superJumbo.jpg"
+  }
   post.image = request.body.image;
+  post.author = request.body.author;
   post.time = new Date();
   posts.push(post);
   response.send("thanks for your message. Press back to add another");
+  
   var dbPosts = database.collection('posts');
   dbPosts.insert(post);
+
 
 }
 app.post('/posts', saveNewPost);
