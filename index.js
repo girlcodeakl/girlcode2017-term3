@@ -56,7 +56,7 @@ app.get('/post', function (req, res) {
    console.log("Searching for post " + searchId);
    var post = posts.find(x => x.id == searchId);
    res.send(post);
- }
+ });
 
 //database
 var mongodb = require('mongodb');
