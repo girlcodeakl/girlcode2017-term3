@@ -19,3 +19,6 @@
     "mongodb": "^2.2.31"
   }
 }
+"scripts": {
+     "start": "node index.js"
+   },
