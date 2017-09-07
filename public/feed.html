@@ -22,6 +22,7 @@
     <div class="message-list">
     </div>
     <script>
+
 //Hello! This is the start of the JavaScript.
 
 var displayMessage = function(post) {
@@ -38,8 +39,13 @@ var displayMessage = function(post) {
 postElement.append(authorElement);
 var idElement = $('<div class ="id">' + post.id + '</div>');
 postElement.append(idElement);
+var replyElement = $('<div class="reply">'+ '<input type="text" name="reply" placeholder="reply goes here" class="replyInput"> <button class="ReplyButton">Reply to post!</button>' + '</div>');
+postElement.append(replyElement);
+var postComment = function () {
+   alert("post id: " + post.id + ", my comment: " + postElement.find("input").val());
+  }
+  postElement.find("button").click(postComment);
 }
-
 
 
 var createFeed = function(data) {
