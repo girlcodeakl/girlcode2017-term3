@@ -31,6 +31,12 @@ var displayMessage = function(post) {
 
   var messageElement = $('<div class="message">' + post.message  +'</div>');
   postElement.append(messageElement);
+  function displayComment(comment) {
+    //the code in here will run for each comment
+    var commentElement = $('<div class="comment">' + '<input type="text" name="comment" placeholder="comment">' + '</div>');
+    postElement.append(timeElement);
+}
+post.comments.forEach(displayComment)
   var imageElement = $('<img class = "size" src="'+post.image+'">');
   postElement.append(imageElement);
   var timeElement = $('<div class="time">' + $.format.prettyDate(post.time) + '</div>');
