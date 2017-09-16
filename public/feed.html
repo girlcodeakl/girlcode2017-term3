@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset='utf-8'>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-dateFormat/1.0/jquery.dateFormat.js">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-dateFormat/1.0/jquery.dateFormat.js">
     </script>
     <title>Message Feed</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lobster">
 
-  </head>
 
-  <body>
-<div class="accountInfo"></div>
-    <div class = "nav-bar">
+  </head>
+  <body class="whitepink">
+    <div class="accountInfo"></div>
+    <div class="image"><img class="imagesize "src="http://www.clker.com/cliparts/t/D/8/8/F/2/slant-pink-heart-outline-md.png" alt="">
+      <h2 class="logotext">Date My Dog</h2>
+    </div>
+    <div class = "darkpink navbar">
      <a href="feed.html">FEED</a>
      <a href ="index.html">INDEX</a>
      <a href="post.html">POST</a>
      </div>
 
-    <h1 class="title">Message Feed</h1>
-    <div class="message-list">
+    <h1 class="title grey">Message Feed</h1>
+    <div class="message-list" >
     </div>
     <script>
+
 //Hello! This is the start of the JavaScript.
 
 var displayMessage = function(post) {
@@ -31,7 +36,8 @@ var displayMessage = function(post) {
 
   var messageElement = $('<div class="message">' + post.message  +'</div>');
   postElement.append(messageElement);
-  var imageElement = $('<img src="'+post.image+'">');
+
+  var imageElement = $('<img class = "size" src="'+post.image+'">');
   postElement.append(imageElement);
   var timeElement = $('<div class="time">' + $.format.prettyDate(post.time) + '</div>');
   postElement.append(timeElement);
@@ -39,8 +45,21 @@ var displayMessage = function(post) {
 postElement.append(authorElement);
 var idElement = $('<div class ="id">' + post.id + '</div>');
 postElement.append(idElement);
-}
+var replyElement = $('<div class="reply">'+ '<input type="text" name="reply" placeholder="reply goes here" class="replyInput"> <button class="ReplyButton">Reply to post!</button>' + '</div>');
+postElement.append(replyElement);
+var postComment = function () {
+   alert("post id: " + post.id + ", my comment: " + postElement.find("input").val());
+  }
+  postElement.find("button").click(postComment);
 
+  function displayComment(comment) {
+    //the code in here will run for each comment
+    var commentElement = $('<div class="comment">'  + comment + '</div>');
+    postElement.append(commentElement);
+}
+post.comments.forEach(displayComment)
+
+}
 
 
 var createFeed = function(data) {
