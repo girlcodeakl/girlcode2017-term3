@@ -39,14 +39,13 @@ var saveNewPost = function (request, response) {
   post.author = cleanauthor;
   post.time = new Date();
   post.id = Math.round(Math.random() * 10000);
+  post.comments = [];
+  //add a fake comment to every post
+  post.comments.push("Great question!");
   posts.push(post);
   response.send("thanks for your message. Press back to add another");
-
   var dbPosts = database.collection('posts');
   dbPosts.insert(post);
-
-
-
 }
 app.post('/posts', saveNewPost);
 

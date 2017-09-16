@@ -36,6 +36,7 @@ var displayMessage = function(post) {
 
   var messageElement = $('<div class="message">' + post.message  +'</div>');
   postElement.append(messageElement);
+
   var imageElement = $('<img class = "size" src="'+post.image+'">');
   postElement.append(imageElement);
   var timeElement = $('<div class="time">' + $.format.prettyDate(post.time) + '</div>');
@@ -50,6 +51,14 @@ var postComment = function () {
    alert("post id: " + post.id + ", my comment: " + postElement.find("input").val());
   }
   postElement.find("button").click(postComment);
+
+  function displayComment(comment) {
+    //the code in here will run for each comment
+    var commentElement = $('<div class="comment">'  + comment + '</div>');
+    postElement.append(commentElement);
+}
+post.comments.forEach(displayComment)
+
 }
 
 
