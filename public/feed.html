@@ -57,7 +57,9 @@ var postComment = function () {
     var commentElement = $('<div class="comment">'  + comment + '</div>');
     postElement.append(commentElement);
 }
-post.comments.forEach(displayComment)
+if (post.comments != undefined) {
+  post.comments.forEach(displayComment)
+}
 
 }
 
