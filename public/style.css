@@ -1,37 +1,108 @@
+.lightpink {
+  background-color: #FFC0A9;
+
+}
+.darkpink {
+  background-color: #FF8598
+}
+.lightgreen {
+  background-color: #C9D787
+}
+.white{
+  background-color: white;
+}
+.darkgreen {
+  color: #7D8A2E
+
+}
+.whitepink {
+  background-color: #FFEEFF
+}
+.grey {
+  color: #828282
+}
 body {
   text-align: center;
 }
 
 .message-list {
-  background-color: #FFF0A5;
+  
   padding: 20px;
 }
 
 .size{
   width:500px;
+  max-width: 100%
+}
+
+.block{
+  display: block;
+  margin: 0 auto;
+}
+
+.searchBox{
+ padding-top: 10px;
+ display: inline-block;
+}
+.navbar{
+  padding: 50px;
+}
+.logotext{
+margin-top: -170px;
+margin-bottom: 200px;
+
+
+}
+.image{
+  position: relative;
+  height:100px;
+}
+.imagesize{
+  height:300px;
+
+}
+h3{
+  display: block;
+  text-align: left;
+
+}
+
+input {
+    border: 1px solid black;
+    background-color: #D3D3D3;
+    color: red;
+    font-size: 20px;
+    padding: 10px;
+}
+
+button {
+   color: black;
+   background-color: blue;
+   border: 5px solid #00008B;
+   font-size: 25px;
+   padding: 10px;
+   box-shadow: 5px 5px 5px #888888;
 }
 
 h1 {
   color: #FFB03B;
+  margin-top: 20px;
 }
 
 .post {
   margin: 10px;
   padding: 10px;
-  border: 2px solid #FFB03B;
+  border: 2px solid black;
   border-radius: 5px;
   color: #468966;
 }
-.nav-bar {
-  background-color: purple;}
-
 
   a{
   color: white;
   text-decoration:none;
-  font-size: 20px;
+  font-size: 45px;
   padding: 50px;
-  font-family:Lobster;
+  font-family:Pacifico;
 
 }
 .note{
