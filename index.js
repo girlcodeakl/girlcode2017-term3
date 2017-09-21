@@ -2,6 +2,7 @@
 var express = require('express')
 var app = express();
 var bodyParser = require('body-parser')
+var sanitizer = require ('sanitizer');
 
 var database = null;
 
@@ -26,22 +27,25 @@ app.get('/posts', sendPostsList);
 var saveNewPost = function (request, response) {
   console.log(request.body.message); //write it on the command prompt so we can see
   console.log(request.body.author);
+  var cleanmessage= sanitizer.escape(request.body.message);
+  var cleanauthor = sanitizer.escape(request.body.author);
+  var cleanimage = sanitizer.escape(request.body.image);
   var post= {};
-  post.message = request.body.message;
+  post.message = cleanmessage;
   if (request.body.image == "" )
   {request.body.image =  "https://static01.nyt.com/images/2016/08/10/science/10tb-dogsperm01/10tb-dogsperm01-superJumbo.jpg"
   }
-  post.image = request.body.image;
-  post.author = request.body.author;
+  post.image = cleanimage;
+  post.author = cleanauthor;
   post.time = new Date();
   post.id = Math.round(Math.random() * 10000);
+  post.comments = [];
+  //add a fake comment to every post
+  post.comments.push("Great question!");
   posts.push(post);
   response.send("thanks for your message. Press back to add another");
-
   var dbPosts = database.collection('posts');
   dbPosts.insert(post);
-
-
 }
 app.post('/posts', saveNewPost);
 

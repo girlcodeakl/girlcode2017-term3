@@ -15,7 +15,7 @@
 
   </head>
   <body class="whitepink">
-
+  
 
     <div class = "darkpink navbar">
       <div class="image"><img class="imagesize "src="http://www.clker.com/cliparts/t/D/8/8/F/2/slant-pink-heart-outline-md.png" alt="">
@@ -24,7 +24,7 @@
      <a href="feed.html">Feed</a>
      <a href ="index.html">Index</a>
      <a href="post.html">Post</a>
-     <a href="">Login</a>
+      <div class="accountInfo"></div>
      </div>
     <h1 class="title grey">Message Feed</h1>
     <div class="message-list" >
@@ -39,6 +39,7 @@ var displayMessage = function(post) {
 
   var messageElement = $('<div class="message">' + post.message  +'</div>');
   postElement.append(messageElement);
+
   var imageElement = $('<img class = "size" src="'+post.image+'">');
   postElement.append(imageElement);
   var timeElement = $('<div class="time">' + $.format.prettyDate(post.time) + '</div>');
@@ -53,6 +54,16 @@ var postComment = function () {
    alert("post id: " + post.id + ", my comment: " + postElement.find("input").val());
   }
   postElement.find("button").click(postComment);
+
+  function displayComment(comment) {
+    //the code in here will run for each comment
+    var commentElement = $('<div class="comment">'  + comment + '</div>');
+    postElement.append(commentElement);
+}
+if (post.comments != undefined) {
+  post.comments.forEach(displayComment)
+}
+
 }
 
 
@@ -65,5 +76,7 @@ $.get("/posts", createFeed);
 
 //This is the end of the JavaScript.
     </script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script src="account.js"></script>
   </body>
 </html>
