@@ -6,6 +6,7 @@ var sanitizer = require ('sanitizer');
 
 var database = null;
 
+
 //If a client asks for a file,
 //look in the public folder. If it's there, give it to them.
 app.use(express.static(__dirname + '/public'));
@@ -13,6 +14,13 @@ app.use(express.static(__dirname + '/public'));
 //this lets us read POST data
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+
+var commentHandler = function (req, res) {
+    var post = posts.find(x => x.id == req.body.postId);
+    post.comments.push(req.body.comment);
+   res.send("ok");
+}
+app.post("/comment", commentHandler);
 
 //make an empty list
 var posts = [];

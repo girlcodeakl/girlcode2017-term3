@@ -48,7 +48,12 @@ postElement.append(idElement);
 var replyElement = $('<div class="reply">'+ '<input type="text" name="reply" placeholder="reply goes here" class="replyInput"> <button class="ReplyButton">Reply to post!</button>' + '</div>');
 postElement.append(replyElement);
 var postComment = function () {
-   alert("post id: " + post.id + ", my comment: " + postElement.find("input").val());
+  var data = {};
+data.postId = post.id;
+data.comment = postElement.find("input").val(); //fixme: replace this with the actual comment
+$.post("/comment", data);
+displayComment(postElement.find("input").val());
+console.log("i asked the server to save your comment");
   }
   postElement.find("button").click(postComment);
 
