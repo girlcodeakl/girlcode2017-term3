@@ -28,6 +28,8 @@ var saveNewPost = function (request, response) {
   console.log(request.body.message); //write it on the command prompt so we can see
   console.log(request.body.author);
   var cleanmessage= sanitizer.escape(request.body.message);
+  if (request.body.author == "" )
+  {request.body.author = "Anonymous"}
   var cleanauthor = sanitizer.escape(request.body.author);
   if (request.body.image == "" )
   {request.body.image =  "http://diysolarpanelsv.com/images/dog-with-a-heart-clipart-2.png"
@@ -38,6 +40,8 @@ var saveNewPost = function (request, response) {
 
   post.image = cleanimage;
   post.author = cleanauthor;
+
+
   post.time = new Date();
   post.id = Math.round(Math.random() * 10000);
   post.comments = [];

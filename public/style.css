@@ -41,6 +41,10 @@ body {
   margin: 0 auto;
 }
 
+.invisible{
+  display: none;
+}
+
 .searchBox{
  padding-top: 10px;
  display: inline-block;

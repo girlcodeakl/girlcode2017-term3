@@ -19,6 +19,7 @@
             var photoURL = user.photoURL;
             user.getToken().then(function(accessToken) {
                 $(".accountInfo").html("Hello, " + displayName + ". <a href='#'>Sign out</a>");
+                $(".nameInput").val(displayName);
                 $(".accountInfo a").click(function (e) {
                     firebase.auth().signOut();
                     e.preventDefault();
