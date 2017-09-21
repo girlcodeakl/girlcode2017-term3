@@ -26,7 +26,7 @@ body {
 }
 
 .message-list {
-  
+
   padding: 20px;
 }
 
@@ -38,6 +38,10 @@ body {
 .block{
   display: block;
   margin: 0 auto;
+}
+
+.invisible{
+  display: none;
 }
 
 .searchBox{
