@@ -21,6 +21,7 @@
 .grey {
   color: #828282
 }
+
 body {
   text-align: center;
 }
@@ -51,18 +52,25 @@ body {
 .navbar{
   padding: 50px;
 }
-.logotext{
-margin-top: -170px;
-margin-bottom: 200px;
 
+
+.text-left{
+  text-align: left;
+  vertical-align: middle;
+}
+.text-right{
+  text-align: right;
+  vertical-align: middle;
 
 }
 .image{
   position: relative;
   height:100px;
+  float:left;
+  margin:-20px;
 }
 .imagesize{
-  height:300px;
+  height:250px;
 
 }
 h3{
@@ -80,12 +88,19 @@ input {
 }
 
 button {
-   color: black;
-   background-color: blue;
-   border: 5px solid #00008B;
+   color: #475B68;
+   background-color:white;
+   border: 5px solid #FF8598;
    font-size: 25px;
    padding: 10px;
-   box-shadow: 5px 5px 5px #888888;
+   font-family: Amatic,sans-serif;
+   border-radius: 13px;
+   margin-left: 10px;
+
+
+}
+.paddingtop{
+  padding-top: 50px;
 }
 
 h1 {
@@ -95,8 +110,8 @@ h1 {
 
 .post {
   margin: 10px;
-  padding: 10px;
-  border: 2px solid black;
+  padding: 40px;
+  border: 2px solid #F996FF;
   border-radius: 5px;
   color: #468966;
 }
@@ -104,8 +119,8 @@ h1 {
   a{
   color: white;
   text-decoration:none;
-  font-size: 45px;
-  padding: 50px;
+  font-size: 35px;
+  padding: 20px;
   font-family:Pacifico;
 
 }
@@ -117,3 +132,10 @@ h1 {
 .id{
       display: none;
   }
+  h2{
+    margin-top: -135px;
+    font-size: 20px;
+  }
+.accountInfo{
+  display:inline;
+}

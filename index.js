@@ -31,13 +31,13 @@ var saveNewPost = function (request, response) {
   if (request.body.author == "" )
   {request.body.author = "Anonymous"}
   var cleanauthor = sanitizer.escape(request.body.author);
-  
+  if (request.body.image == "" )
+  {request.body.image =  "http://diysolarpanelsv.com/images/dog-with-a-heart-clipart-2.png"
+  }
   var cleanimage = sanitizer.escape(request.body.image);
   var post= {};
   post.message = cleanmessage;
-  if (request.body.image == "" )
-  {request.body.image =  "https://static01.nyt.com/images/2016/08/10/science/10tb-dogsperm01/10tb-dogsperm01-superJumbo.jpg"
-  }
+
   post.image = cleanimage;
   post.author = cleanauthor;
 
