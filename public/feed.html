@@ -4,83 +4,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset='utf-8'>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-dateFormat/1.0/jquery.dateFormat.js">
-    </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-dateFormat/1.0/jquery.dateFormat.js"></script>
     <title>Message Feed</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lobster">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-
-
   </head>
-  <body class="whitepink">
   
-
+  
+  <body class="whitepink">
     <div class = "darkpink navbar">
       <div class="image"><img class="imagesize "src="http://www.clker.com/cliparts/t/D/8/8/F/2/slant-pink-heart-outline-md.png" alt="">
         <h2 class="logotext">Date My Dog</h2>
       </div>
-     <a href="feed.html">Feed</a>
-     <a href ="index.html">Index</a>
-     <a href="post.html">Post</a>
+      <a href="feed.html">Feed</a>
+      <a href ="index.html">Index</a>
+      <a href="post.html">Post</a>
       <div class="accountInfo"></div>
-     </div>
-    <h1 class="title grey">Message Feed</h1>
-    <div class="message-list" >
     </div>
+    <h1 class="title grey">Message Feed</h1>
+    <div class="message-list"></div>
+    
+
+    // JavaScript Start
     <script>
+    var displayMessage = function(post) {
+      var postElement = $('<div class="post"></div>');
+      $(".message-list").append(postElement);
 
-//Hello! This is the start of the JavaScript.
+      var messageElement = $('<div class="message">' + post.message  +'</div>');
+      postElement.append(messageElement);
 
-var displayMessage = function(post) {
-  var postElement = $('<div class="post"></div>');
-  $(".message-list").append(postElement);
+      var imageElement = $('<img class = "size" src="'+post.image+'">');
+      postElement.append(imageElement);
+      var timeElement = $('<div class="time">' + $.format.prettyDate(post.time) + '</div>');
+      postElement.append(timeElement);
+      var authorElement = $('<div>' + post.author + '</div>');
+      postElement.append(authorElement);
+      var idElement = $('<div class ="id">' + post.id + '</div>');
+      postElement.append(idElement);
+      var replyElement = $('<div class="reply">'+ '<input type="text" name="reply" placeholder="reply goes here" class="replyInput"> <button class="ReplyButton">Reply to post!</button>' + '</div>');
+      postElement.append(replyElement);
+      var postComment = function () {
+        var data = {};
+        data.postId = post.id;
+        data.comment = postElement.find("input").val(); //fixme: replace this with the actual comment
+        $.post("/comment", data);
+        displayComment(postElement.find("input").val());
+        console.log("i asked the server to save your comment");
+      }
+      postElement.find("button").click(postComment);
 
-  var messageElement = $('<div class="message">' + post.message  +'</div>');
-  postElement.append(messageElement);
+      function displayComment(comment) {
+        // the code in here will run for each comment
+        var commentElement = $('<div class="comment">'  + comment + '</div>');
+        postElement.append(commentElement);
+      }
 
-  var imageElement = $('<img class = "size" src="'+post.image+'">');
-  postElement.append(imageElement);
-  var timeElement = $('<div class="time">' + $.format.prettyDate(post.time) + '</div>');
-  postElement.append(timeElement);
-  var authorElement = $('<div>' + post.author + '</div>');
-postElement.append(authorElement);
-var idElement = $('<div class ="id">' + post.id + '</div>');
-postElement.append(idElement);
-var replyElement = $('<div class="reply">'+ '<input type="text" name="reply" placeholder="reply goes here" class="replyInput"> <button class="ReplyButton">Reply to post!</button>' + '</div>');
-postElement.append(replyElement);
-var postComment = function () {
-  var data = {};
-data.postId = post.id;
-data.comment = postElement.find("input").val(); //fixme: replace this with the actual comment
-$.post("/comment", data);
-displayComment(postElement.find("input").val());
-console.log("i asked the server to save your comment");
-  }
-  postElement.find("button").click(postComment);
+      if (post.comments != undefined) {
+        post.comments.forEach(displayComment)
+      }
 
-  function displayComment(comment) {
-    //the code in here will run for each comment
-    var commentElement = $('<div class="comment">'  + comment + '</div>');
-    postElement.append(commentElement);
-}
-if (post.comments != undefined) {
-  post.comments.forEach(displayComment)
-}
-
-}
+    }
 
 
-var createFeed = function(data) {
-  data.reverse();
-  data.forEach(displayMessage);
-}
+    var createFeed = function(data) {
+      data.reverse();
+      data.forEach(displayMessage);
+    }
 
-$.get("/posts", createFeed);
+    $.get("/posts", createFeed);
 
-//This is the end of the JavaScript.
+    // JavaScript End
     </script>
+  
     <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
     <script src="account.js"></script>
   </body>
