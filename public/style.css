@@ -1,23 +1,27 @@
 .lightpink {
   background-color: #FFC0A9;
-
 }
+
 .darkpink {
   background-color: #FF8598
 }
+
 .lightgreen {
   background-color: #C9D787
 }
+
 .white{
   background-color: white;
 }
+
 .darkgreen {
   color: #7D8A2E
-
 }
+
 .whitepink {
   background-color: #FFEEFF
 }
+
 .grey {
   color: #828282
 }
@@ -27,7 +31,6 @@ body {
 }
 
 .message-list {
-
   padding: 20px;
 }
 
@@ -49,34 +52,35 @@ body {
  padding-top: 10px;
  display: inline-block;
 }
+
 .navbar{
   padding: 50px;
 }
-
 
 .text-left{
   text-align: left;
   vertical-align: middle;
 }
+
 .text-right{
   text-align: right;
   vertical-align: middle;
-
 }
+
 .image{
   position: relative;
   height:100px;
   float:left;
   margin:-20px;
 }
+
 .imagesize{
   height:250px;
-
 }
+
 h3{
   display: block;
   text-align: left;
-
 }
 
 input {
@@ -96,9 +100,8 @@ button {
    font-family: Amatic,sans-serif;
    border-radius: 13px;
    margin-left: 10px;
-
-
 }
+
 .paddingtop{
   padding-top: 50px;
 }
@@ -116,26 +119,29 @@ h1 {
   color: #468966;
 }
 
-  a{
+a{
   color: white;
   text-decoration:none;
   font-size: 35px;
   padding: 20px;
   font-family:Pacifico;
-
 }
+
 .note{
   font-size: 30px;
   color:purple;
   border: 2px solid #black
 }
+
 .id{
-      display: none;
-  }
-  h2{
+  display: none;
+}
+
+h2{
     margin-top: -135px;
     font-size: 20px;
-  }
+}
+
 .accountInfo{
   display:inline;
 }
